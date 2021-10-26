@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\EntryController;
 use App\Http\Controllers\Api\ExitController;
 use App\Http\Controllers\Api\ParkingFloorController;
+use App\Http\Controllers\Api\ParkingLotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportAuthController;
@@ -28,5 +29,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('create_floor', [ParkingFloorController::class, 'store']);
     Route::get('parking_floors', [ParkingFloorController::class, 'index']);
     Route::post('parking_floor', [ParkingFloorController::class, 'show']);
+    Route::get('parking_lot', [ParkingLotController::class, 'index']);
     Route::get('logout', [PassportAuthController::class, 'logout']);
 });
