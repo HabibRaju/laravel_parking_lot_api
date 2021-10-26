@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 
 use App\Models\ParkingFloor;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class ExitController extends Controller
@@ -11,7 +12,8 @@ class ExitController extends Controller
     function index(Request $request)
     {
         $parkingFloor = ParkingFloor::find($request->parking_floor_id);
-
+        Vehicle::find($request->vehicle_id)->delete();
+        
         if($request->car_type == 1){
             $parkingFloor->car = $parkingFloor->car-1;
             $parkingFloor->remaining_capacity = $parkingFloor->remaining_capacity+1;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 
 use App\Models\ParkingFloor;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +13,11 @@ class EntryController extends Controller
 {
     function index(Request $request)
     {
+        $vehicle = Vehicle::create([
+            'name'             => $request->name,
+            'parking_floor_id' => $request->parking_floor_id,
+            'car_type'         => $request->car_type
+        ]);
         $parkingFloor = ParkingFloor::find($request->parking_floor_id);
         if($parkingFloor->remaining_capacity==0){
             return response()->json([

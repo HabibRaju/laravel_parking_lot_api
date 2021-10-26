@@ -14,11 +14,13 @@ class ParkingLotController extends Controller
             'name' => "Commercial Parking Group.",
             'address' => "Dahaka, Bangladesh."
         ];
+        // $time = date('Y-m-d H:i:s');
         $parkingFloor = ParkingFloor::all();
 
         return response()->json([
             'success' => true,
             'Parking Lot Data' => $data,
+            // 'date'             => $time,
             'Parking Floor'    =>  $parkingFloor
         ]);
     }
